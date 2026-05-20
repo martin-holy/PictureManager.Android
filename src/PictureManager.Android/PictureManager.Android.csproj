@@ -52,6 +52,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\PictureManager.Common\PictureManager.Common.csproj" />
+		<ProjectReference Include="..\..\..\PictureManager.Common\src\PictureManager.Common\PictureManager.Common.csproj" />
   </ItemGroup>
 </Project>
