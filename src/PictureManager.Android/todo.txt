@@ -3,7 +3,6 @@
 - Slider can't be slided to the max in image resize dialog
 - sometimes unhandeled exception for CollectionViewItem when selected/opened
 - CollectionViewHost: unselect on long touch
-- first context menu open in tree is off screen
 
 - review the logic behind RecyclerView payloads in TreeViewHostAdapterBase where I subscribe to _flatTree.TreeItemPropertyChangedEvent
   to create payloads vs FlatTreeItemV binding directly to FlatTreeItem
