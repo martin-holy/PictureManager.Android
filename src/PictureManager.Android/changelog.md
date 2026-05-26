@@ -1,3 +1,6 @@
+1.3.1:
+	- [N] Viewer
+
 1.2.0:
 	- [B] SlidePanelsGrid: Pinned/Overlay layouts
 	- [B] StatusBarV: People and Keywords update
