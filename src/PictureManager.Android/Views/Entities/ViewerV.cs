@@ -73,6 +73,7 @@ public sealed class ViewerV : ScrollView {
 
   private void _onSelectedChanged(ViewerM? viewerM) {
     if (viewerM == null) return;
+    ScrollTo(0, 0);
     _includedFolders.SetItems(viewerM.IncludedFolders);
     _excludedFolders.SetItems(viewerM.ExcludedFolders);
     _excludedKeywords.SetItems(viewerM.ExcludedKeywords);
