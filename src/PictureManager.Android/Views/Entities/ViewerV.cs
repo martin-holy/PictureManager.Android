@@ -123,7 +123,7 @@ public sealed class ViewerV : ScrollView {
 
     return LayoutU.Vertical(context)
       .Add(header, LPU.LinearMatchWrap())
-      .Add(view, LPU.Linear(LPU.Match, DisplayU.DpToPx(200)));
+      .Add(view, LPU.Linear(LPU.Match, DisplayU.DpToPx(150)));
   }
 
   private LinearLayout _createContainerWithRemove(Context context, string? iconName, string text,
