@@ -57,10 +57,10 @@ public sealed class ViewerV : ScrollView {
   }
 
   private void _incudedFoldersItemSelectionChanged(IListItem item, bool selected) =>
-    _includedFoldersRemoveBinding.Parameter = item;
+    _includedFoldersRemoveBinding.Parameter = selected ? item : null;
 
   private void _excudedFoldersItemSelectionChanged(IListItem item, bool selected) =>
-    _excludedFoldersRemoveBinding.Parameter = item;
+    _excludedFoldersRemoveBinding.Parameter = selected ? item : null;
 
   private void _categoryGroupsItemSelectionChanged(IListItem item, bool selected) {
     if (_categoryGroupsUpdating) return;
@@ -69,7 +69,7 @@ public sealed class ViewerV : ScrollView {
   }
 
   private void _excludedKeywordsItemSelectionChanged(IListItem item, bool selected) =>
-    _excludedKeywordsRemoveBinding.Parameter = item;
+    _excludedKeywordsRemoveBinding.Parameter = selected ? item : null;
 
   private void _onSelectedChanged(ViewerM? viewerM) {
     if (viewerM == null) return;
@@ -78,6 +78,12 @@ public sealed class ViewerV : ScrollView {
     _excludedFolders.SetItems(viewerM.ExcludedFolders);
     _excludedKeywords.SetItems(viewerM.ExcludedKeywords);
     _categoryGroups.Post(() => _updateCategoryGroups(viewerM));
+    
+    Post(() => {
+      _includedFoldersRemoveBinding.Parameter = null;
+      _excludedFoldersRemoveBinding.Parameter = null;
+      _excludedKeywordsRemoveBinding.Parameter = null;
+    });
   }
 
   private void _updateCategoryGroups(ViewerM viewerM) {
