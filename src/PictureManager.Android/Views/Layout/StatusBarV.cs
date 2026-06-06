@@ -1,8 +1,10 @@
 ﻿using Android.Content;
 using Android.Views;
 using Android.Widget;
+using MH.UI.Android.Binding;
 using MH.UI.Android.Controls;
 using MH.UI.Android.Controls.Items;
+using MH.UI.Android.Extensions;
 using MH.UI.Android.Utils;
 using MH.Utils;
 using MH.Utils.Disposables;
@@ -54,6 +56,7 @@ public sealed class StatusBarV : WrapLayout {
   private TextView? _getPersonView(object item) =>
     item is PersonM p
       ? new TextView(Context) { Text = p.Name, Background = BackgroundFactory.RoundDarker() }
+        .WithClickCommand(ToolsTabsVM.OpenPersonTabCommand, _currentBindings, p, false, false)
       : null;
 
   private TextView? _getKeywordView(object item) =>
