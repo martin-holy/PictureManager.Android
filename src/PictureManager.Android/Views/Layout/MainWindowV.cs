@@ -60,6 +60,7 @@ public class MainWindowV : FrameLayout {
     _toolBarV.Init(SlidePanels.ViewPager, _bindings);
     SlidePanels.ViewPager.PageChanged += _onPanelChanged;
     _middleContent.MediaViewer.ContentTapped += _onMediaViewerContentTapped;
+    _coreVM.MediaViewer.MediaItemsSetedEvent += _onMediaViewerMediaItemsSeted;
 
     DataContext.ToolsTabs.Bind(nameof(TabControl.Selected), x => x.Selected, _onToolsTabChange, false).DisposeWith(_bindings);
     DataContext.Bind(nameof(MainWindowVM.IsFullScreen), x => x.IsFullScreen, _onIsFullScreenChanged, false).DisposeWith(_bindings);
@@ -73,9 +74,6 @@ public class MainWindowV : FrameLayout {
 
   private void _onIsInViewModeChanged(bool isInViewMode) {
     if (isInViewMode) {
-      _lastPageIndex = SlidePanels.ViewPager.GetCurrentIndex();
-      SlidePanels.ViewPager.SetCurrentItem(1, true);
-
       DataContext.SlidePanelsGrid.PanelTop.IsOpen = true;
       DataContext.SlidePanelsGrid.PanelBottom.IsOpen = true;
     }
@@ -84,6 +82,11 @@ public class MainWindowV : FrameLayout {
       if (pageIndex == 1 && _lastPageIndex != pageIndex)
         SlidePanels.ViewPager.SetCurrentItem(_lastPageIndex, true);
     }
+  }
+
+  private void _onMediaViewerMediaItemsSeted() {
+    _lastPageIndex = SlidePanels.ViewPager.GetCurrentIndex();
+    SlidePanels.ViewPager.SetCurrentItem(1, true);
   }
 
   private void _onToolBarClick(ToolBarV _) {
