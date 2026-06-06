@@ -1,6 +1,7 @@
-1.3.0:
+1.3.0 (not released):
 	- [N] Viewer
 	- [N] StatusBarV: Click on person name opens details
+	- [B] MainWindowV: MediaViewer activation
 
 1.2.0:
 	- [B] SlidePanelsGrid: Pinned/Overlay layouts
