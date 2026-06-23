@@ -2,6 +2,7 @@
 	- [N] Viewer
 	- [N] StatusBarV: Click on person name opens details
 	- [B] MainWindowV: MediaViewer activation
+	- [U] SimpleDB reducing ~50% memory allocation
 
 1.2.0:
 	- [B] SlidePanelsGrid: Pinned/Overlay layouts
