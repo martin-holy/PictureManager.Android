@@ -78,7 +78,7 @@ public class MainActivity : FragmentActivity {
   }
 
   protected override void OnStop() {
-    Core.R?.BackUp();
+    Core.R?.DB.BackUp();
     base.OnStop();
   }
 

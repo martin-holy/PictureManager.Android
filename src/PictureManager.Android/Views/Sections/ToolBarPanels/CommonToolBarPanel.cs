@@ -20,7 +20,7 @@ public sealed class CommonToolBarPanel : LinearLayout {
 
     bindings.AddRange([
       Core.VM.Log.Items.Bind(nameof(ICollection.Count), x => x.Count, count => _bindButton(openLog, count)),
-      Core.R.Bind(nameof(CoreR.Changes), x => x.Changes, changes => _bindButton(saveDb, changes))]);
+      Core.R.DB.Bind(nameof(MH.Utils.DB.SimpleDB.Changes), x => x.Changes, changes => _bindButton(saveDb, changes))]);
 
     AddView(new ButtonMenu(Context!, mainWindowVM.MainMenu, mainWindowVM.MainMenu.Icon));
     AddView(openLog);
