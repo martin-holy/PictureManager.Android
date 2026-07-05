@@ -18,6 +18,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using MHOrientation = MH.Utils.Imaging.Orientation;
 
 namespace PictureManager.Android.ViewModels;
 
@@ -59,10 +60,10 @@ public static class MediaItemVM {
     mim.Height = (int)data[0];
     mim.Width = (int)data[1];
     mim.Orientation = (int)data[2] switch {
-      90 => MH.Utils.Imaging.Orientation.Rotate90,
-      180 => MH.Utils.Imaging.Orientation.Rotate180,
-      270 => MH.Utils.Imaging.Orientation.Rotate270,
-      _ => MH.Utils.Imaging.Orientation.Normal,
+      90 => MHOrientation.Rotate90,
+      180 => MHOrientation.Rotate180,
+      270 => MHOrientation.Rotate270,
+      _ => MHOrientation.Normal,
     };
 
     mim.Success = true;
@@ -273,7 +274,7 @@ public static class MediaItemVM {
         Bitmap? thumb = null;
 
         // 2. MediaStore only for normal orientation
-        if (mi.Orientation == Imaging.Orientation.Normal)
+        if (mi.Orientation == MHOrientation.Normal)
           thumb = await getMediaStoreThumb(mi, context);
 
         token.ThrowIfCancellationRequested();
