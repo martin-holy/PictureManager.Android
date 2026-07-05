@@ -76,7 +76,7 @@ public static class MediaItemVM {
     _readExif(mim, exif, gpsOnly);
     if (gpsOnly) return;
 
-    var xmpXml = XmpU.ReadFromJpeg(filePath);
+    var xmpXml = MH.Utils.Imaging.XmpU.ReadFromJpeg(filePath);
     if (!string.IsNullOrEmpty(xmpXml))
       _readXmpMetadata(mim, xmpXml);
   }
@@ -198,13 +198,13 @@ public static class MediaItemVM {
   }
 
   private static bool _writeXmp(string srcPath, ImageM img) {
-    var existingXmp = XmpU.ReadFromJpeg(srcPath);
+    var existingXmp = MH.Utils.Imaging.XmpU.ReadFromJpeg(srcPath);
     var mergedXmp = ImageS.BuildXmp(existingXmp, img);
 
     if (string.Equals(existingXmp, mergedXmp, StringComparison.Ordinal))
       return false;
 
-    return XmpU.WriteToJpeg(srcPath, mergedXmp);
+    return MH.Utils.Imaging.XmpU.WriteToJpeg(srcPath, mergedXmp);
   }
 
   public static Task<Bitmap?> GetFullImage(MediaItemM mi, CancellationToken token) =>
