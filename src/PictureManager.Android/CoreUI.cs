@@ -44,8 +44,8 @@ public class CoreUI : ICoreP, IDisposable {
     MH.UI.Android.Utils.IconU.IconNameToColor = Resources.Res.IconToColorDic;
     MH.UI.Controls.CollectionView.ItemBorderSize = MH.UI.Android.Utils.DisplayU.DpToPx(3);
     MediaItemS.ReadMetadata = ViewModels.MediaItemVM.ReadMetadata;
+    MediaItemS.GetVideoMetadata = MH.UI.Android.Utils.ImagingU.GetVideoMetadata;
     ImageS.WriteMetadata = (img, _) => ViewModels.MediaItemVM.WriteMetadata(img, _mainActivity);
-    VideoVM.GetVideoMetadataFunc = MH.UI.Android.Utils.ImagingU.GetVideoMetadata;
     SegmentVM.SegmentSize = 80; // TODO move this to settings
     CoreVM.DisplayScale = 1.0 / DisplayU.Metrics.Density;
     SegmentS.ExportSegment = Utils.ImagingU.ExportSegment;
