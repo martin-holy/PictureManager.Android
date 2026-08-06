@@ -3,6 +3,7 @@
 	- [N] StatusBarV: Click on person name opens details
 	- [B] MainWindowV: MediaViewer activation
 	- [U] SimpleDB reducing ~50% memory allocation
+	- [C] PictureManager.Common v2.36.x
 
 1.2.0:
 	- [B] SlidePanelsGrid: Pinned/Overlay layouts
