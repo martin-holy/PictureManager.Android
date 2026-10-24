@@ -89,7 +89,10 @@ public sealed class SettingsV : ScrollView {
       new Spinner(context).BindSelected(settings, nameof(MediaItemSettings.SortField), x => x.SortField, (s, v) => s.SortField = v, sortFields, bindings),
 
       new TextView(context) { Text = "Sort order:" },
-      new Spinner(context).BindSelected(settings, nameof(MediaItemSettings.SortOrder), x => x.SortOrder, (s, v) => s.SortOrder = v, CollectionView.SortOrderTextMap, bindings)
+      new Spinner(context).BindSelected(settings, nameof(MediaItemSettings.SortOrder), x => x.SortOrder, (s, v) => s.SortOrder = v, CollectionView.SortOrderTextMap, bindings),
+
+      new TextView(context).BindText(settings, nameof(MediaItemSettings.VideoMetadataFullRewriteThreshold), x => x.VideoMetadataFullRewriteThreshold, x => $"Allow full rewrite of video files smaller than: {0} MB", bindings),
+      new Slider(context, 0, 1000, 10).BindProgress(settings, nameof(MediaItemSettings.VideoMetadataFullRewriteThreshold), x => x.VideoMetadataFullRewriteThreshold, (s, v) => s.VideoMetadataFullRewriteThreshold = v, bindings)
     ]);
   }
 
