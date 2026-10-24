@@ -3,6 +3,7 @@
 	- [N] StatusBarV: Click on person name opens details
 	- [B] MainWindowV: MediaViewer activation
 	- [U] SimpleDB reducing ~50% memory allocation
+	- [N] MediaItem Settings: Allow full rewrite of video files smaller than threshold
 
 1.2.0:
 	- [B] SlidePanelsGrid: Pinned/Overlay layouts
