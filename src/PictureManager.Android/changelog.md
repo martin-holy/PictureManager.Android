@@ -1,5 +1,6 @@
 1.3.1(not released):
 	- [B] MediaItem: Removing comment
+	- [B] Duplicated segment size group when segment keywords changed
 
 1.3.0:
 	- [N] Viewer
