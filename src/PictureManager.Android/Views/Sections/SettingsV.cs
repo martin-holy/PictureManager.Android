@@ -61,7 +61,8 @@ public sealed class SettingsV : ScrollView {
   private static void _createCommonSettings(Context context, LinearLayout container, CommonSettings settings, BindingScope bindings) {
     _addViews(container, [
       new TextView(context).BindText(settings, nameof(CommonSettings.JpegQuality), x => x.JpegQuality, x => $"Jpeg quality: {x}", bindings),
-      new Slider(context, 80, 95, 1.0).BindProgress(settings, nameof(CommonSettings.JpegQuality), x => x.JpegQuality, (s, v) => s.JpegQuality = v, bindings)
+      new Slider(context, 80, 95, 1.0).BindProgress(settings, nameof(CommonSettings.JpegQuality), x => x.JpegQuality, (s, v) => s.JpegQuality = v, bindings),
+      new TextView(context).BindText(settings, nameof(CommonSettings.Languages), x => x.Languages, x => "Languages", bindings)
     ]);
   }
 
