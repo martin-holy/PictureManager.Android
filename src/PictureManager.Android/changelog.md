@@ -3,6 +3,8 @@
 	- [B] Duplicated segment size group when segment keywords changed
 	- [B] Missing ruler icon
 	- [N] Settings: Preferred app language with multiple fallback languages for missing translations
+	- [N] MainMenu: Export translations
+	- [N] Czech translation
 
 1.3.0:
 	- [N] Viewer
