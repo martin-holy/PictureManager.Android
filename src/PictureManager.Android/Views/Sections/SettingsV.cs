@@ -77,7 +77,7 @@ public sealed class SettingsV : ScrollView {
   }
 
   private static void _createMediaItemSettings(Context context, LinearLayout container, MediaItemSettings settings, BindingScope bindings) {
-    var sortFields = MediaItemCollectionView.SortFields.Select(x => new KeyValuePair<string, string>(x.Name, x.Name)).ToArray();
+    var sortFields = MediaItemCollectionView.SortFields.Select(x => new KeyValuePair<string, string>(x.Name, x.Title)).ToArray();
     
     _addViews(container, [
       new TextView(context).BindText(settings, nameof(MediaItemSettings.MediaItemThumbScale), x => x.MediaItemThumbScale, x => $"Media item thumbnail scale: {x:G2}", bindings),
