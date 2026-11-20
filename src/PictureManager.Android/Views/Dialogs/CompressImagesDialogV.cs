@@ -32,7 +32,7 @@ public sealed class CompressImagesDialogV : LinearLayout {
   private LinearLayout _qualityLayout() {
     var text = new TextView(Context)
       .BindText(_dataContext, nameof(CompressImagesDialog.JpegQualityLevel),
-        x => x.JpegQualityLevel, q => $"JPG quality level: {q}", _bindings);
+        x => x.JpegQualityLevelText, x => x, _bindings);
 
     var slider = new Slider(Context, 70, 95, 1)
       .BindProgress(_dataContext, nameof(CompressImagesDialog.JpegQualityLevel),
@@ -44,8 +44,8 @@ public sealed class CompressImagesDialogV : LinearLayout {
   }
 
   private LinearLayout _comparisonLayout() {
-    var original = _sizeLayout("Original", nameof(CompressImagesDialog.TotalSourceSize), x => x.TotalSourceSize);
-    var compresssed = _sizeLayout("Compressed", nameof(CompressImagesDialog.TotalCompressedSize), x => x.TotalCompressedSize);
+    var original = _sizeLayout(_dataContext.OriginalText, nameof(CompressImagesDialog.TotalSourceSize), x => x.TotalSourceSize);
+    var compresssed = _sizeLayout(_dataContext.CompressedText, nameof(CompressImagesDialog.TotalCompressedSize), x => x.TotalCompressedSize);
 
     return LayoutU.Horizontal(Context)
       .Add(original, LPU.Linear(0, LPU.Match, 1f))
