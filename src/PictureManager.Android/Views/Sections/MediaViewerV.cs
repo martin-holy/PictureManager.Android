@@ -26,9 +26,10 @@ public class MediaViewerV : FrameLayout {
 
   public MediaViewerV(Context context, MediaViewerVM dataContext, BindingScope bindings) : base(context) {
     DataContext = dataContext;
+    Core.S.Segment.Rect.EditLimit = 20;
     _adapter = new(
       () => dataContext.MediaItems,
-      ctx => new MediaItemFullV(ctx, dataContext, Core.VM.Segment.Rect, new(Core.S.Segment) { EditLimit = 20 }, Core.VM.Video),
+      ctx => new MediaItemFullV(ctx, dataContext, Core.VM.Segment.Rect, Core.S.Segment.Rect, Core.VM.Video),
       () => new(LPU.Match, LPU.Match),
       _onViewCreated,
       _onPayloadBind);
