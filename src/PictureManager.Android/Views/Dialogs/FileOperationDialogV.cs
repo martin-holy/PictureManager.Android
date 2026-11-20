@@ -15,15 +15,15 @@ public sealed class FileOperationDialogV : LinearLayout {
     Orientation = Orientation.Vertical;
     LayoutParameters = LPU.LinearMatchWrap();
 
-    var fromText = new TextView(context) { Text = "From:" };
+    var fromText = new TextView(context) { Text = dataContext.TxtFrom };
     var fromPath = new TextView(context)
       .BindText(dataContext, nameof(FileOperationDialog.DirFrom), x => x.DirFrom, x => x, bindings);
 
-    var toText = new TextView(context) { Text = "To:" };
+    var toText = new TextView(context) { Text = dataContext.TxtTo };
     var toPath = new TextView(context)
       .BindText(dataContext, nameof(FileOperationDialog.DirTo), x => x.DirTo, x => x, bindings);
 
-    var fileText = new TextView(context) { Text = "File:" };
+    var fileText = new TextView(context) { Text = dataContext.TxtFile };
     var fileName = new TextView(context)
       .BindText(dataContext, nameof(FileOperationDialog.FileName), x => x.FileName, x => x, bindings);
 
