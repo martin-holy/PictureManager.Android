@@ -19,7 +19,7 @@ public sealed class ImageResizeDialogV : LinearLayout {
     Orientation = Orientation.Vertical;
     LayoutParameters = LPU.Linear(LPU.Match, 0, 1f);
 
-    var skipIf = new CheckBox(Context) { Text = "Skip if file exists" }
+    var skipIf = new CheckBox(Context) { Text = dataContext.TxtSkipIfExists }
       .BindChecked(_dataContext, nameof(ImageResizeDialog.SkipIfExists),
         x => x.SkipIfExists, (s, v) => s.SkipIfExists = v, bindings);
 
@@ -34,13 +34,13 @@ public sealed class ImageResizeDialogV : LinearLayout {
   }
 
   private LinearLayout _optionsLayout() {
-    var preserve = new TextView(Context) { Text = "Preserve:" };
+    var preserve = new TextView(Context) { Text = _dataContext.TxtPreserve };
     
-    var metadata = new CheckBox(Context) { Text = "Metadata" }
+    var metadata = new CheckBox(Context) { Text = _dataContext.TxtPreserveMetadata }
       .BindChecked(_dataContext, nameof(ImageResizeDialog.PreserveMetadata),
       x => x.PreserveMetadata, (s, v) => s.PreserveMetadata = v, _bindings);
     
-    var folders = new CheckBox(Context) { Text = "Folders" }
+    var folders = new CheckBox(Context) { Text = _dataContext.TxtPreserveFolders }
       .BindChecked(_dataContext, nameof(ImageResizeDialog.PreserveFolders),
       x => x.PreserveFolders, (s, v) => s.PreserveFolders = v, _bindings);
 
@@ -52,7 +52,7 @@ public sealed class ImageResizeDialogV : LinearLayout {
 
   private LinearLayout _sizeLayout() {
     var text = new TextView(Context)
-      .BindText(_dataContext, nameof(ImageResizeDialog.Mpx), x => x.Mpx, mpx => $"{mpx:F1} MPx", _bindings);
+      .BindText(_dataContext, nameof(ImageResizeDialog.TxtMpx), x => x.TxtMpx, x => x, _bindings);
     
     var slider = new Slider(Context, 0.1, _dataContext.MaxMpx, 0.1)
       .BindProgress(_dataContext, nameof(ImageResizeDialog.Mpx), x => x.Mpx, (s, p) => s.Mpx = p, _bindings);
