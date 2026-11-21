@@ -101,25 +101,25 @@ public sealed class ViewerV : ScrollView {
   }
 
   private LinearLayout _createIncludedFolders() {
-    var layout = _createContainerWithRemove(Context!, Common.Res.IconFolder, "Included Folders", _includedFolders, out var btn);
+    var layout = _createContainerWithRemove(Context!, Common.Res.IconFolder, _dataContext.TxtIncludedFolders, _includedFolders, out var btn);
     _includedFoldersRemoveBinding = new CommandBinding(btn).Bind(ViewerVM.RemoveIncludedFolderCommand);
     return layout;
   }
 
   private LinearLayout _createExcludedFolders() {
-    var layout = _createContainerWithRemove(Context!, Common.Res.IconFolder, "Excluded Folders", _excludedFolders, out var btn);
+    var layout = _createContainerWithRemove(Context!, Common.Res.IconFolder, _dataContext.TxtExcludedFolders, _excludedFolders, out var btn);
     _excludedFoldersRemoveBinding = new CommandBinding(btn).Bind(ViewerVM.RemoveExcludedFolderCommand);
     return layout;
   }
 
   private LinearLayout _createExcludedKeywords() {
-    var layout = _createContainerWithRemove(Context!, Common.Res.IconTagLabel, "Excluded Keywords", _excludedKeywords, out var btn);
+    var layout = _createContainerWithRemove(Context!, Common.Res.IconTagLabel, _dataContext.TxtExcludedKeywords, _excludedKeywords, out var btn);
     _excludedKeywordsRemoveBinding = new CommandBinding(btn).Bind(ViewerVM.RemoveExcludedKeywordCommand);
     return layout;
   }
 
   private LinearLayout _createCategoryGrops() =>
-    _createContainer(Context!, Res.IconGroup, "Category Groups", _categoryGroups);
+    _createContainer(Context!, Res.IconGroup, _dataContext.TxtCategoryGroups, _categoryGroups);
 
   private static LinearLayout _createContainer(Context context, string? iconName, string text,
     SelectableItemsView<IListItem> view) {
