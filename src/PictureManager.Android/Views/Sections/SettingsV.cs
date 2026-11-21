@@ -60,18 +60,18 @@ public sealed class SettingsV : ScrollView {
 
   private static void _createCommonSettings(Context context, LinearLayout container, CommonSettings settings, BindingScope bindings) {
     _addViews(container, [
-      new TextView(context).BindText(settings, nameof(CommonSettings.JpegQuality), x => x.JpegQuality, x => $"Jpeg quality: {x}", bindings),
+      new TextView(context).BindText(settings, nameof(CommonSettings.TxtJpegQuality), x => x.TxtJpegQuality, x => x, bindings),
       new Slider(context, 80, 95, 1.0).BindProgress(settings, nameof(CommonSettings.JpegQuality), x => x.JpegQuality, (s, v) => s.JpegQuality = v, bindings),
-      new TextView(context).BindText(settings, nameof(CommonSettings.Languages), x => x.Languages, x => "Languages", bindings)
+      new TextView(context).BindText(settings, nameof(CommonSettings.TxtLanguages), x => x.TxtLanguages, x => x, bindings)
     ]);
   }
 
   private static void _createGeoNameSettings(Context context, LinearLayout container, GeoNameSettings settings, BindingScope bindings) {
     _addViews(container, [
-      new TextView(context) { Text = "Load from web:" },
+      new TextView(context) { Text = settings.TxtLoadFromWeb },
       new CheckBox(context).BindChecked(settings, nameof(GeoNameSettings.LoadFromWeb), x => x.LoadFromWeb, (s, v) => s.LoadFromWeb = v, bindings),
 
-      new TextView(context) { Text = "User name:" },
+      new TextView(context) { Text = settings.TxtUserName },
       new EditText(context).BindText(settings, nameof(GeoNameSettings.UserName), x => x.UserName, (s, v) => s.UserName = v, bindings)
     ]);
   }
@@ -80,33 +80,33 @@ public sealed class SettingsV : ScrollView {
     var sortFields = MediaItemCollectionView.SortFields.Select(x => new KeyValuePair<string, string>(x.Name, x.Title)).ToArray();
     
     _addViews(container, [
-      new TextView(context).BindText(settings, nameof(MediaItemSettings.MediaItemThumbScale), x => x.MediaItemThumbScale, x => $"Media item thumbnail scale: {x:G2}", bindings),
+      new TextView(context).BindText(settings, nameof(MediaItemSettings.TxtMediaItemThumbScale), x => x.TxtMediaItemThumbScale, x => x, bindings),
       new Slider(context, 0.2, 2, 0.1).BindProgress(settings, nameof(MediaItemSettings.MediaItemThumbScale), x => x.MediaItemThumbScale, (s, v) => s.MediaItemThumbScale = v, bindings),
 
-      new TextView(context) { Text = "Scroll exactly to MediaItem in thumbnails:" },
+      new TextView(context) { Text = settings.TxtScrollExactlyToMediaItem },
       new CheckBox(context).BindChecked(settings, nameof(MediaItemSettings.ScrollExactlyToMediaItem), x => x.ScrollExactlyToMediaItem, (s, v) => s.ScrollExactlyToMediaItem = v, bindings),
 
-      new TextView(context) { Text = "Sort field:" },
+      new TextView(context) { Text = settings.TxtSortField },
       new Spinner(context).BindSelected(settings, nameof(MediaItemSettings.SortField), x => x.SortField, (s, v) => s.SortField = v, sortFields, bindings),
 
-      new TextView(context) { Text = "Sort order:" },
+      new TextView(context) { Text = settings.TxtSortOrder },
       new Spinner(context).BindSelected(settings, nameof(MediaItemSettings.SortOrder), x => x.SortOrder, (s, v) => s.SortOrder = v, CollectionView.SortOrderTextMap, bindings),
 
-      new TextView(context).BindText(settings, nameof(MediaItemSettings.VideoMetadataFullRewriteThreshold), x => x.VideoMetadataFullRewriteThreshold, x => $"Allow full rewrite of video files smaller than: {0} MB", bindings),
+      new TextView(context).BindText(settings, nameof(MediaItemSettings.TxtVideoMetadataFullRewriteThreshold), x => x.TxtVideoMetadataFullRewriteThreshold, x => x, bindings),
       new Slider(context, 0, 1000, 10).BindProgress(settings, nameof(MediaItemSettings.VideoMetadataFullRewriteThreshold), x => x.VideoMetadataFullRewriteThreshold, (s, v) => s.VideoMetadataFullRewriteThreshold = v, bindings)
     ]);
   }
 
   private static void _createSegmentSettings(Context context, LinearLayout container, SegmentSettings settings, BindingScope bindings) {
     _addViews(container, [
-      new TextView(context).BindText(settings, nameof(SegmentSettings.GroupSize), x => x.GroupSize, x => $"Group size: {x}", bindings),
+      new TextView(context).BindText(settings, nameof(SegmentSettings.TxtGroupSize), x => x.TxtGroupSize, x => x, bindings),
       new Slider(context, 100, 1000, 50).BindProgress(settings, nameof(SegmentSettings.GroupSize), x => x.GroupSize, (s, v) => s.GroupSize = v, bindings)
     ]);
   }
 
   private static void _createMediaViewerSettings(Context context, LinearLayout container, MediaViewerSettings settings, BindingScope bindings) {
     _addViews(container, [
-      new TextView(context) { Text = "Expand content to fill:" },
+      new TextView(context) { Text = settings.TxtExpandToFill },
       new CheckBox(context).BindChecked(settings, nameof(MediaViewerSettings.ExpandToFill), x => x.ExpandToFill, (s, v) => s.ExpandToFill = v, bindings)
     ]);
   }
