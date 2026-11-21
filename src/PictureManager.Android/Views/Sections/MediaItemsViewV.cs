@@ -28,7 +28,7 @@ public class MediaItemsViewV : FrameLayout {
     DataContext = dataContext;
     SetBackgroundResource(Resource.Color.c_static_ba);
 
-    _loadingText = new TextView(context) { Text = "Loading ...", TextSize = 18 };
+    _loadingText = new TextView(context) { Text = dataContext.TxtLoading, TextSize = 18 };
     _importText = new TextView(context);
     _importProgress = new ProgressBar(context);
     _importCancelButton = new Button(new ContextThemeWrapper(context, Resource.Style.mh_DialogButton), null, 0)
@@ -50,7 +50,7 @@ public class MediaItemsViewV : FrameLayout {
       dataContext.Bind(nameof(MediaItemsViewVM.IsLoading), x => x.IsLoading, _ => _updateVisibility()),
       dataContext.Import.Bind(nameof(MediaItemsImport.IsImporting), x => x.IsImporting, _ => _updateVisibility()),
       dataContext.Import.Bind(nameof(MediaItemsImport.Count), x => x.Count, count => {
-        _importText.Text = $"Importing {count} new items ...";
+        _importText.Text = DataContext.TxtImporting;
         _importProgress.Max = count;
       }),
       dataContext.Import.Bind(nameof(MediaItemsImport.DoneCount), x => x.DoneCount, x => _importProgress.Progress = x)]);
