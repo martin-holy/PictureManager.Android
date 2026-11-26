@@ -59,7 +59,6 @@ public class MainActivity : FragmentActivity {
         ?? throw new InvalidOperationException("Unable to resolve app storage directory.");
       
       await _core.InitAsync(splashScreen.ProgressMessage, appDir);
-      MH.UI.Android.Utils.Init.SetDialogImplementation();
       _coreUI = new(this);
       _core.AfterInit(_coreUI);
       _coreUI.AfterInit(this);
